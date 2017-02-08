@@ -1,22 +1,28 @@
 function toList () {
-  var item = document.getElementById("item").value;
-  var qtd = document.getElementById("quantity").value;
-  var price = document.getElementById("price").value;
-  var total_price = qtd * price;
+  var item = document.getElementById("item");
+  var qtd = document.getElementById("quantity");
+  var price = document.getElementById("price");
+  var total_price = qtd.value * price.value;
 
   var tr = "<tr>";
 
   tr += "<td><!-- <input type=\"checkbox\" value=\"\">  --></td>";
-  tr += "<td>" + item + "</td>";
-  tr += "<td>" + qtd + "</td>";
-  tr += "<td>" + (parseFloat(price)).toFixed(2) + "</td>";
+  tr += "<td>" + item.value + "</td>";
+  tr += "<td>" + qtd.value + "</td>";
+  tr += "<td>" + (parseFloat(price.value)).toFixed(2) + "</td>";
   tr += "<td class=\"total\">" + (parseFloat(total_price)).toFixed(2) + "</td>";
-  tr += "<td><span class=\"glyphicon glyphicon-remove\" onclick=\"removeRow(this)\"></span></td>";
+  tr += "<td><span class=\"glyphicon glyphicon-edit\" onclick=\"editRow(this)\"></span></td>";
+  tr += "<td><span class=\"glyphicon glyphicon-trash\" onclick=\"removeRow(this)\"></span></td>";
 
   tr += "</tr>";
 
   var table = document.getElementById("table-shoplist");
   table.tBodies[0].innerHTML += tr;
+
+  item.value = "";
+  qtd.value = "";
+  price.value = "";
+
   calculateTotal();
 }
 
@@ -32,7 +38,21 @@ function calculateTotal () {
   document.getElementById("display-total").innerHTML = "Total: $ " + total;
 }
 
-function removeRow (button){
+function removeRow (button) {
+  if(confirm("You really want remove?")){
+    button.parentElement.parentElement.remove();
+    calculateTotal();
+  }
+}
+
+function editRow(button) {
+  var tds = button.parentElement.parentElement.getElementsByTagName("td");
+
+  document.getElementById("item").value = tds[1].innerHTML;
+  document.getElementById("quantity").value = tds[2].innerHTML;
+  document.getElementById("price").value = tds[3].innerHTML;
+
   button.parentElement.parentElement.remove();
   calculateTotal();
+
 }
