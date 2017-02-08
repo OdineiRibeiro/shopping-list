@@ -14,3 +14,7 @@ h2 {
   width: 70%;
   margin: 0 auto;
 }
+
+input, .buttons {
+  margin-top: 5px;
+}

@@ -6,7 +6,7 @@ function toList () {
 
   var tr = "<tr>";
 
-  tr += "<td><input type=\"checkbox\" value=\"\"></td>";
+  tr += "<td><!-- <input type=\"checkbox\" value=\"\">  --></td>";
   tr += "<td>" + item + "</td>";
   tr += "<td>" + qtd + "</td>";
   tr += "<td>" + (parseFloat(price)).toFixed(2) + "</td>";
