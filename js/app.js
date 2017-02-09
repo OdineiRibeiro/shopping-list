@@ -2,14 +2,14 @@ function toList () {
   var item = document.getElementById("item");
   var qtd = document.getElementById("quantity");
   var price = document.getElementById("price");
-  var total_price = qtd.value * price.value;
+  var total_price = (normalizeNumber(qtd.value) * normalizeNumber(price.value)).toFixed(2);
 
   var tr = "<tr>";
 
   tr += "<td><!-- <input type=\"checkbox\" value=\"\">  --></td>";
   tr += "<td class=\"item-name\">" + item.value + "</td>";
   tr += "<td>" + qtd.value + "</td>";
-  tr += "<td>" + (parseFloat(price.value)).toFixed(2) + "</td>";
+  tr += "<td>" + (normalizeNumber(price.value)).toFixed(2) + "</td>";
   tr += "<td class=\"total\">" + (parseFloat(total_price)).toFixed(2) + "</td>";
   tr += "<td><span class=\"glyphicon glyphicon-edit\" onclick=\"editRow(this)\"></span></td>";
   tr += "<td><span class=\"glyphicon glyphicon-trash\" onclick=\"removeRow(this)\"></span></td>";
@@ -35,7 +35,7 @@ function calculateTotal () {
     total += parseFloat(value);
   }
 
-  document.getElementById("display-total").innerHTML = "Total: $ " + total;
+  document.getElementById("display-total").innerHTML = "Total: $ " + total.toFixed(2);
 }
 
 function removeRow (button) {
@@ -54,5 +54,14 @@ function editRow(button) {
 
   button.parentElement.parentElement.remove();
   calculateTotal();
-
 }
+
+function normalizeNumber(number) {
+  number = number.gsub(",", ".");
+  number = parseFloat(number);
+  return number;
+}
+
+String.prototype.gsub = function(search, replacement) {
+  return this.split(search).join(replacement);
+};
