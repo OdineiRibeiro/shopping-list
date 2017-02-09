@@ -24,3 +24,14 @@ input, .buttons {
   width: 50px;
   min-width: 50px;
 }
+
+.github-image {
+  width: 70%;
+  margin: 0 auto;
+}
+
+img {
+  margin-top: 20px;
+  width: 20%;
+  height: 20%;
+}
