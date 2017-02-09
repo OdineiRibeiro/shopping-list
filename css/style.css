@@ -31,9 +31,9 @@ input, .buttons {
 }
 
 img {
-  margin-top: 20px;
-  width: 20%;
-  height: 20%;
+  margin-top: 30px;
+  width: 10%;
+  height: 10%;
 }
 
 .glyphicon:hover {
