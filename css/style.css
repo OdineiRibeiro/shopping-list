@@ -21,8 +21,8 @@ input, .buttons {
 
 .item-name {
   display:table-cell;
-  width: 50px;
-  min-width: 50px;
+  width: 200px;
+  min-width: 200px;
 }
 
 .github-image {
