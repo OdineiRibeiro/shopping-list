@@ -35,3 +35,8 @@ img {
   width: 20%;
   height: 20%;
 }
+
+.glyphicon:hover {
+  cursor: pointer;
+  color: #000;
+}
