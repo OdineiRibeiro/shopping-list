@@ -14,8 +14,11 @@ input, .buttons {
   margin-top: 0.5em;
 }
 
-
 .glyphicon:hover {
   cursor: pointer;
   color: #000;
+}
+
+.navbar {
+  margin-bottom: 5vh;
 }
